@@ -10,10 +10,10 @@ public class launch {
 		// TODO Auto-generated method stub
 
 		// on start up read from text file called "contacts.txt"!
-		storedFile contacts = new storedFile();
-		contacts.run();
+		//storedFile contacts = new storedFile();
+		//contacts.run();
 		
-		System.out.println("hello world!");
+		System.out.println("hello peeps!");
 	}
 
 }
