@@ -1,6 +1,10 @@
 import java.io.*;
 
-
+/**
+ * A text file that will hold the data.
+ *
+ * This will check if the file exists if it does we will load the data. Otherwise create it.
+ */
 public class storedFile {
 
 	public void run() {  
@@ -16,8 +20,6 @@ public class storedFile {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-//			pw.println("hello");
-//			pw.close();
 			
 		}
  		  

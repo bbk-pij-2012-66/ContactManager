@@ -5,7 +5,6 @@ public class launch {
 	 * launch class
 	 * 
 	 * need to check if text file exists, if not we will create it
-	 *
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
