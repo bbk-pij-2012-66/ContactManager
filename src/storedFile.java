@@ -7,20 +7,21 @@ import java.io.*;
  */
 public class storedFile {
 
+	private PrintWriter pw;
+
 	public void run() {  
 
 		System.out.println("in here");
 		
 		try {
-			PrintWriter pw = new PrintWriter(new FileWriter("whereami.txt"));
+			pw = new PrintWriter(new FileWriter("h:\\whereami.txt"));
 			pw.println("hello");
 			pw.flush();
-			pw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			
+			pw.close();
 		}
  		  
 	}
