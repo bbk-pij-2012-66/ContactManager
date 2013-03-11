@@ -1,0 +1,16 @@
+tests
+
+keep track of
+
+meetings has a date - Yes
+date has a meeting - kind of...
+meeting has a contact - Yes
+date has a contact - No
+
+- contacts
+- meetings
+- past and future dates
+
+all data stored in contacts.txt
+
+file read up at startup.
