@@ -11,14 +11,14 @@ import Ass3.interfaces.Contact;
 public class ContactImpl implements Contact
 {
 
-	private int id;
+	private int ContactID;
 	private String name;
 	private String notes;
 	
 	@Override
 	public int getId()
 	{
-		return this.id;
+		return this.ContactID;
 	}
 
 	@Override
