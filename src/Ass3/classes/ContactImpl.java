@@ -11,11 +11,39 @@ import Ass3.interfaces.Contact;
 public class ContactImpl implements Contact
 {
 
-	private int ContactID;
+	private int contactID;
 	private String name;
 	private String notes;
 	
 	
+	/**
+	 * Constructor for pre-populating objects on startup from txt file
+	 * 
+	 * @param contactID
+	 * @param name
+	 * @param notes
+	 */
+	public ContactImpl(int contactID, String name, String notes)
+	{
+		this.contactID = contactID;// need to check this id is unique
+		this.name = name;
+		this.notes = notes;
+	}
+	
+	/**
+	 * Constructor for pre-populating objects on startup from txt file
+	 * 
+	 * @param contactID
+	 * @param name
+	 * @param notes
+	 */
+	public ContactImpl(String name, String notes)
+	{
+		this.contactID = setId();// need to check this id is unique
+		this.name = name;
+		this.notes = notes;
+	}
+
 	/**
 	 * Returns the ID of the contact.
 	 *
@@ -24,17 +52,21 @@ public class ContactImpl implements Contact
 	@Override
 	public int getId()
 	{
-		return this.ContactID;
+		return this.contactID;
 	}
 
 	/**
 	 * Create an ID for the contact.
 	 *
 	 * Must be unique!
+	 * @return 
 	 */	
-	public void setId()
+	public int setId()
 	{
-		
+		// use set type t
+		contactID = contactID + 1;
+		return contactID;
+	
 	}
 	
 	/**
