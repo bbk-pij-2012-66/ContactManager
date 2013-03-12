@@ -44,6 +44,11 @@ public class ContactImpl implements Contact
 		this.notes = notes;
 	}
 
+	public ContactImpl()
+	{
+		//empty constructor
+	} 
+
 	/**
 	 * Returns the ID of the contact.
 	 *
@@ -67,6 +72,16 @@ public class ContactImpl implements Contact
 		contactID = contactID + 1;
 		return contactID;
 	
+	}
+	
+	/**
+	 * Setter for unit tests
+	 * 
+	 * @param passedId
+	 */
+	public void setId(int passedId)
+	{
+		this.contactID = passedId;
 	}
 	
 	/**
