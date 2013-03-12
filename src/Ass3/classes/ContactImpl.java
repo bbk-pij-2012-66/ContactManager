@@ -2,6 +2,12 @@ package Ass3.classes;
 
 import Ass3.interfaces.Contact;
 
+/**
+ * Implements the Contact interface
+ *
+ * Contacts have an ID (unique), a name (probably unique, but maybe
+ * not), and notes that the user may want to save about them.
+ */
 public class ContactImpl implements Contact
 {
 
