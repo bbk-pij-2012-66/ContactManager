@@ -1,2 +1,9 @@
 .project
 .classpath
+.bin
+.DS_Store
+.settings
+/classpath
+/project
+/bin
+/.settings

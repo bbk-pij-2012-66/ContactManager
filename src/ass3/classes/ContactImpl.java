@@ -149,5 +149,17 @@ public class ContactImpl implements Contact
 		// currently set to append.
 		this.notes = this.notes + note;
 	}
+	
+	/**
+	 * Set notes about the contact.
+	 *
+	 * @param note the notes to be set
+	 */
+	public void setNotes(String note) 
+	{
+		// add notes to this contacts object.
+		// currently set to append.
+		this.notes = note;
+	}
 
 }

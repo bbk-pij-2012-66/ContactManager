@@ -22,7 +22,7 @@ public class XMLToObject
 
 				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 				ContactImpl pullContact = (ContactImpl) jaxbUnmarshaller.unmarshal(aFile);
-				System.out.println(pullContact);
+				System.out.println("[id=" + pullContact.getId() + ", name=" + pullContact.getName() + ", notes=" + pullContact.getNotes() + "]");
 				
 			} catch (JAXBException e) {
 				e.printStackTrace();
