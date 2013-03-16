@@ -1,5 +1,10 @@
 package ass3.classes;
 
+
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import ass3.interfaces.Contact;
 
 
@@ -10,6 +15,8 @@ import ass3.interfaces.Contact;
  * Contacts have an ID (unique), a name (probably unique, but maybe
  * not), and notes that the user may want to save about them.
  */
+
+@XmlRootElement
 public class ContactImpl implements Contact
 {
 
@@ -57,6 +64,7 @@ public class ContactImpl implements Contact
 	 * @return the ID of the contact.
 	 */
 	@Override
+	@XmlElement
 	public int getId()
 	{
 		return this.contactID;

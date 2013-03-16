@@ -10,54 +10,53 @@ import ass3.classes.ContactImpl;
 public class ObjectToXML 
 {
 	public static void main(String[] args) {
-		
-		
-		checkFolderExistsOtherwiseCreate();
 
-		
-//		try {
-
-			String home = System.getProperty("user.home"); 
-			File file = new File(home + "/tmp/" +"file.xml");
-			
-			//check file exists
-			if (file.exists())
-			{
-				System.out.println("file exists");
-			} else {
-				System.out.println("file does not exist");
-			}
-			
-//			JAXBContext jaxbContext = JAXBContext.newInstance(Customer.class);
-//			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-//
-//			// output pretty printed
-//			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-//
-//			jaxbMarshaller.marshal(customer, file);
-//			jaxbMarshaller.marshal(customer, System.out);
-//
-//		} catch (JAXBException e) {
-//			e.printStackTrace();
-//		}
-	}
-			
-
-	public static void checkFolderExistsOtherwiseCreate()
-	{
-		ContactImpl aContact = new ContactImpl();
+		String home = System.getProperty("user.home"); 
+		//		File file = new File(home + "/tmp/" +"file.xml");
+		File aFolder = new File(home + "/tmp/");
+		File aFile = new File(aFolder + "contacts.txt");
 		
 		// test data
+		//------------------------
+		ContactImpl aContact = new ContactImpl();
 		aContact.setName("Baz Maj");
 		aContact.setId(1);
 		aContact.addNotes("junior java programmer");
-		
-		
-		
-		
-		
+		//------------------------
+
+		checkFolderExistsOtherwiseCreate(aFolder);
+		saveFileToFolder(aContact, aFile);
+
 	}
-		
-			
+
+	public static void checkFolderExistsOtherwiseCreate(File aFolder)
+	{
+		// if folder doesn't  exist then create
+		if(!aFolder.isDirectory())
+		{
+			aFolder.mkdir();
+			System.out.println("folder created");
+		} 
+	}
+
+	public static void saveFileToFolder(ContactImpl contacts, File file)
+	{
+		System.out.println("saving file...");
+		try {
+
+			JAXBContext jaxbContext = JAXBContext.newInstance(ContactImpl.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+			// output pretty printed
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+			jaxbMarshaller.marshal(contacts, file);
+			jaxbMarshaller.marshal(contacts, System.out);
+
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }
