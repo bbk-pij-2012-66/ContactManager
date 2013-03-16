@@ -22,7 +22,7 @@ public class ContactImpl implements Contact
 
 	private int contactID;
 	private String name;
-	private String notes;
+	private String notes = "";
 	
 	
 	/**
@@ -64,7 +64,7 @@ public class ContactImpl implements Contact
 	 * @return the ID of the contact.
 	 */
 	@Override
-	@XmlElement
+	@XmlAttribute
 	public int getId()
 	{
 		return this.contactID;
@@ -131,6 +131,7 @@ public class ContactImpl implements Contact
 	 * @return a string with notes about the contact, maybe empty.
 	 */
 	@Override
+	@XmlElement
 	public String getNotes() 
 	{
 		return this.notes;

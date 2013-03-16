@@ -18,7 +18,7 @@ public class ObjectToXML
 		String home = System.getProperty("user.home"); 
 		//		File file = new File(home + "/tmp/" +"file.xml");
 		File aFolder = new File(home + "/tmp");
-		File aFile = new File(aFolder + "/contacts.txt");
+		File aFile = new File(aFolder + "/contacts.xml");
 		
 		// test data
 		//------------------------
