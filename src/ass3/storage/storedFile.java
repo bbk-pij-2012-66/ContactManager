@@ -1,4 +1,7 @@
-import java.io.*;
+package ass3.storage;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * A text file that will hold the data.

@@ -1,14 +1,15 @@
-package Ass3.classes;
+package ass3.classes;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
-import Ass3.interfaces.Contact;
-import Ass3.interfaces.ContactManager;
-import Ass3.interfaces.FutureMeeting;
-import Ass3.interfaces.Meeting;
-import Ass3.interfaces.PastMeeting;
+import ass3.interfaces.Contact;
+import ass3.interfaces.ContactManager;
+import ass3.interfaces.FutureMeeting;
+import ass3.interfaces.Meeting;
+import ass3.interfaces.PastMeeting;
+
 
 public class ContactManagerImpl implements ContactManager
 {

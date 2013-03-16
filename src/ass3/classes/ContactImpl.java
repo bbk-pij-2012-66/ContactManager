@@ -1,6 +1,8 @@
-package Ass3.classes;
+package ass3.classes;
 
-import Ass3.interfaces.Contact;
+import ass3.interfaces.Contact;
+
+
 
 /**
  * Implements the Contact interface

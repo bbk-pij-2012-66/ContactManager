@@ -1,4 +1,7 @@
-package Ass3.interfaces;
+package ass3.interfaces;
+
+
+
 
 /**
  * A meeting that was held in the past.

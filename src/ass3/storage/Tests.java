@@ -1,8 +1,8 @@
+package ass3.storage;
 
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,8 +12,8 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import Ass3.classes.ContactImpl;
-import Ass3.interfaces.Contact;
+import ass3.classes.ContactImpl;
+import ass3.interfaces.Contact;
 
 /**
  * This Java Class will be used to test the functionality of Contact Manager

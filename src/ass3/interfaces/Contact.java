@@ -1,4 +1,5 @@
-package Ass3.interfaces;
+package ass3.interfaces;
+
 
 /**
  * A contact is a person we are making business with or may do in the future.

@@ -1,7 +1,10 @@
-package Ass3.interfaces;
+package ass3.interfaces;
+
+
 
 import java.util.Calendar;
 import java.util.Set;
+
 
 /**
  * A class to represent meetings
