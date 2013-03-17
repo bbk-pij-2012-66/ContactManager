@@ -59,40 +59,70 @@ public class Tests {
 	}
 
 	@Test
+	public void return_contacts_based_on_name()
+	{
+		Set<Contact> contactReturned = new HashSet<Contact>();
+		ContactManager sut = new ContactManagerImpl();
+
+		contactReturned = sut.getContacts("Pete");
+		
+		Set<String> testContacts = new HashSet<String>();
+		testContacts.add("Pete Mas");
+		testContacts.add("Pete Axe");
+		
+		assertThat(testContacts.equals(contactReturned), is(true));
+	}
+	
+	
+	
+	@Test
+	public void flush_command_saves_to_file()
+	{
+		
+		//ContactManager testFlush = new ContactManagerImpl();
+		
+		//testFlush.flush();
+		ObjectToXML flusher = new ObjectToXML();
+		
+		flusher.pushToFile(listOfContacts);
+		
+		String home = System.getProperty("user.home"); 
+		File aFolder = new File(home + "/tmp");
+		File aFile = new File(aFolder + "/contacts.txt");
+		
+		assertThat(aFile.exists(), is(true));
+		
+	}
+
+	@Test
 	public void add_New_Contact_and_flush()
 	{
 		ContactManager sut = new ContactManagerImpl();
 
 		sut.addNewContact("James Wingnut", "Special Ops");
 
-		for (ContactImpl contact : contacts) 
+//		for (ContactImpl contact : contacts) 
+//		{
+//			System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
+//		}
+		
+		Set<Integer> setOfIds = new HashSet<Integer>();
+		List<Integer> listOfIds = new ArrayList<Integer>();
+
+		for (int i=0; i < 5; i++)
 		{
-			System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
+			setOfIds.add(contacts.get(i).getId());
+			listOfIds.add(contacts.get(i).getId());
 		}
+		assertThat(setOfIds.size(), is(listOfIds.size()));
 		
 		sut.flush();
-	}
-
-
-	@Test
-	public void flush_command_saves_to_file()
-	{
-
-		//ContactManager testFlush = new ContactManagerImpl();
-
-		//testFlush.flush();
-		ObjectToXML flusher = new ObjectToXML();
-
-		flusher.pushToFile(listOfContacts);
-
 		String home = System.getProperty("user.home"); 
 		File aFolder = new File(home + "/tmp");
 		File aFile = new File(aFolder + "/contacts.txt");
-
+		
 		assertThat(aFile.exists(), is(true));
-
 	}
-
 
 
 	@Test
@@ -111,48 +141,5 @@ public class Tests {
 		assertThat(setOfIds.size(), is(listOfIds.size()));
 	}
 
-	/*	@Test
-	public void generated_numbers_must_be_between_1_and_49 ()
-	{
-		LotteryNumberGenerator sut = new LotteryNumberGenerator();
 
-		int lowest=49;
-		int highest=1;
-
-		for (int i=0; i<100000; i++)
-		{
-			Set<Integer> lotteryNumbers = sut.generateLotteryNumbers();
-			for (Integer num : lotteryNumbers)
-			{
-				if (num < lowest)
-				{
-					lowest = num;
-				}
-				if (num > highest)
-				{
-					highest = num;
-				}
-			}
-		}
-
-		assertThat(highest, is(49));
-		assertThat(lowest, is(1));
-	}
-
-	@Test
-	public void should_match_numbers_properly ()
-	{
-		PlayLottery lottery = new PlayLottery();
-		Set<Integer> lotteryNumbers = new HashSet<Integer>(6);
-		Set<Integer> userNumbers = new HashSet<Integer>(6);
-
-		lotteryNumbers.add(1);lotteryNumbers.add(6);lotteryNumbers.add(8);lotteryNumbers.add(24);lotteryNumbers.add(35);lotteryNumbers.add(49);
-		userNumbers.add(2);userNumbers.add(4);userNumbers.add(24);userNumbers.add(34);userNumbers.add(35);userNumbers.add(45);
-		Set<Integer> matchedNumbers = lottery.playLottery(lotteryNumbers, userNumbers);
-
-		assertThat(matchedNumbers.size(), is(2));
-		assertThat(matchedNumbers.contains(24), is(true));
-		assertThat(matchedNumbers.contains(35), is(true));
-
-	}*/
 }

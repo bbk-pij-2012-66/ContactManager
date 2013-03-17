@@ -1,6 +1,7 @@
 package ass3.classes;
 
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,13 +31,6 @@ public class ContactManagerImpl implements ContactManager
 
 	}
 	
-	// add new contact with name and some notes
-	@Override
-	public void addNewContact(String name, String notes)
-	{
-		ContactImpl cContact = new ContactImpl(name, notes);
-		ContactList.addContact(cContact);
-	}	
 	
 	// returns a set of contacts based on some(?) ids
 	@Override
@@ -49,7 +43,19 @@ public class ContactManagerImpl implements ContactManager
 	@Override
 	public Set<Contact> getContacts(String name)
 	{
-		return null;
+		ContactList listOfContacts = new ContactList();
+		Set<Contact> contactNames = new HashSet<Contact>();
+		
+		//grab all names
+		for (ContactImpl contact : listOfContacts.getContactList()) 
+		{
+			if (contact.getName().contains(name)) {
+				System.out.println(contact.getName());
+			}
+				
+		}
+				
+		return contactNames;
 	}
 	
 ////////////////PAST MEETINGS
@@ -114,6 +120,8 @@ public class ContactManagerImpl implements ContactManager
 		return null;
 	}
 
+
+	///------------------working------------------//
 	/**
 	* Save all data to disk. *
 	* This method must be executed when the program is
@@ -128,5 +136,13 @@ public class ContactManagerImpl implements ContactManager
 		flusher.pushToFile(listOfContacts);
 
 	}
+
+	// add new contact with name and some notes
+	@Override
+	public void addNewContact(String name, String notes)
+	{
+		ContactImpl cContact = new ContactImpl(name, notes);
+		ContactList.addContact(cContact);
+	}	
 
 }
