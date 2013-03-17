@@ -38,7 +38,7 @@ public class ContactManagerImpl implements ContactManager
 	// returns a set of contacts based on some(?) ids
 	@Override
 	public Set<Contact> getContacts(int... ids)
-	{
+	{	
 		return null;
 	}
 
@@ -48,7 +48,6 @@ public class ContactManagerImpl implements ContactManager
 	{
 		return null;
 	}
-	
 	
 ////////////////PAST MEETINGS
 	// returns PastMeeting object if id passed
@@ -112,11 +111,17 @@ public class ContactManagerImpl implements ContactManager
 		return null;
 	}
 
-////////////////closes links?	
+	/**
+	* Save all data to disk. *
+	* This method must be executed when the program is
+	* closed and when/if the user requests it. */	
 	@Override
 	public void flush()
 	{
-		// TODO Auto-generated method stub
+//		ObjectToXML flusher = new ObjectToXML();
+//		ContactList list = (ContactList) getContacts();
+//		
+//		flusher.pushToFile(list);
 
 	}
 

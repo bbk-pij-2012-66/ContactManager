@@ -4,6 +4,7 @@ package ass3.storage;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +14,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ass3.classes.ContactImpl;
+import ass3.classes.ContactManagerImpl;
 import ass3.interfaces.Contact;
+import ass3.interfaces.ContactManager;
 
 /**
  * This Java Class will be used to test the functionality of Contact Manager
@@ -27,7 +30,8 @@ import ass3.interfaces.Contact;
  */
 public class Tests {
 
-	List<Contact> contacts = new ArrayList<Contact>();
+	ArrayList<ContactImpl> contacts = new ArrayList<ContactImpl>();
+	ContactList listOfContacts = new ContactList();
 
 	@Before
 	public void init()
@@ -52,27 +56,60 @@ public class Tests {
 		dContact.setId(4);
 		dContact.addNotes("senior java programmer");
 		contacts.add(dContact);
-			
+		
+		listOfContacts.setContactList(contacts);
+
+	}
+
+	@Test
+	public void get_all_contacts()
+	{
+		ContactManager sut = new ContactManagerImpl();
+		List<ContactImpl> listOfContacts = new ArrayList();
+		
+		// sut.getContacts(ids);
+		
 	}
 	
+
+	@Test
+	public void flush_command_saves_to_file()
+	{
+
+		//ContactManager testFlush = new ContactManagerImpl();
+		
+		//testFlush.flush();
+		ObjectToXML flusher = new ObjectToXML();
+		
+		flusher.pushToFile(listOfContacts);
+		
+		String home = System.getProperty("user.home"); 
+		File aFolder = new File(home + "/tmp");
+		File aFile = new File(aFolder + "/contacts.txt");
+
+		assertThat(aFile.exists(), is(true));
+		
+	}
+
+
 
 	@Test
 	public void ensure_contactIds_are_unique()
 	{
 		Set<Integer> setOfIds = new HashSet<Integer>();
 		List<Integer> listOfIds = new ArrayList<Integer>();
-		
+
 		for (int i=0; i < 4; i++)
 		{
 			setOfIds.add(contacts.get(i).getId());
 			listOfIds.add(contacts.get(i).getId());
-//			System.out.println(contacts.get(i).getId());
+			//			System.out.println(contacts.get(i).getId());
 		}
 
 		assertThat(setOfIds.size(), is(listOfIds.size()));
 	}
 
-/*	@Test
+	/*	@Test
 	public void generated_numbers_must_be_between_1_and_49 ()
 	{
 		LotteryNumberGenerator sut = new LotteryNumberGenerator();

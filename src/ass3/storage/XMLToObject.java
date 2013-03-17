@@ -12,7 +12,7 @@ import ass3.classes.ContactImpl;
 
 public class XMLToObject 
 {
-	public static void main(String[] args) {
+	public static ArrayList<ContactImpl> loadFile() {
 
 		String home = System.getProperty("user.home"); 
 		File aFile = new File(home + "/tmp/contacts.txt");
@@ -30,15 +30,15 @@ public class XMLToObject
 				ContactList pullContactList = (ContactList) jaxbUnmarshaller.unmarshal(aFile);
 				ArrayList<ContactImpl> list = pullContactList.getContactList();
 				
-				for (ContactImpl contact : list) {
-					System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
-				}
+				return list;
+
 				
 			} catch (JAXBException e) {
 				e.printStackTrace();
 			}
 
 		}
+		return null;
 
 
 	}
