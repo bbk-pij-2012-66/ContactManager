@@ -16,7 +16,7 @@ import ass3.interfaces.Contact;
  * not), and notes that the user may want to save about them.
  */
 
-@XmlRootElement
+@XmlRootElement(name = "contact")
 public class ContactImpl implements Contact
 {
 
@@ -99,6 +99,7 @@ public class ContactImpl implements Contact
 	 *
 	 * @return the name of the contact.
 	 */
+	@XmlElement(name = "contactName")
 	@Override
 	public String getName()
 	{
@@ -131,7 +132,7 @@ public class ContactImpl implements Contact
 	 * @return a string with notes about the contact, maybe empty.
 	 */
 	@Override
-	@XmlElement
+	@XmlElement(name = "contactNotes")
 	public String getNotes() 
 	{
 		return this.notes;

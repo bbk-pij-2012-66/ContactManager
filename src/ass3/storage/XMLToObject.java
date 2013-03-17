@@ -2,6 +2,8 @@ package ass3.storage;
 
 
 import java.io.File;
+import java.util.ArrayList;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -18,11 +20,19 @@ public class XMLToObject
 		if (aFile.exists()) {
 
 			try {
-				JAXBContext jaxbContext = JAXBContext.newInstance(ContactImpl.class);
-
+				// get variables from our xml file, created before
+			    System.out.println();
+			    System.out.println("Output from our XML File: ");
+	
+				JAXBContext jaxbContext = JAXBContext.newInstance(ContactList.class);
 				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				ContactImpl pullContact = (ContactImpl) jaxbUnmarshaller.unmarshal(aFile);
-				System.out.println("[id=" + pullContact.getId() + ", name=" + pullContact.getName() + ", notes=" + pullContact.getNotes() + "]");
+	
+				ContactList pullContactList = (ContactList) jaxbUnmarshaller.unmarshal(aFile);
+				ArrayList<ContactImpl> list = pullContactList.getContactList();
+				
+				for (ContactImpl contact : list) {
+					System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
+				}
 				
 			} catch (JAXBException e) {
 				e.printStackTrace();

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 
 import ass3.classes.ContactImpl;
 import ass3.interfaces.Contact;
@@ -22,32 +24,39 @@ public class ObjectToXML
 		
 		// test data
 		//------------------------
-		List<Contact> contacts = new ArrayList<Contact>();
+		ArrayList<ContactImpl> contactsY = new ArrayList<ContactImpl>();
 		
 		ContactImpl aContact = new ContactImpl();
 		aContact.setName("Baz Maj");
 		aContact.setId(1);
 		aContact.setNotes("junior java programmer");
-		contacts.add(aContact);
+		contactsY.add(aContact);
+		
 		ContactImpl bContact = new ContactImpl();
 		bContact.setName("Matt Ross");
 		bContact.setId(2);
 		bContact.setNotes("junior c++ programmer");
-		contacts.add(bContact);
+		contactsY.add(bContact);
+		
 		ContactImpl cContact = new ContactImpl();
 		cContact.setName("Pete Axe");
 		cContact.setId(2);
 		cContact.setNotes("java programmer");
-		contacts.add(cContact);
+		contactsY.add(cContact);
+		
 		ContactImpl dContact = new ContactImpl();
 		dContact.setName("Pat Mas");
 		dContact.setId(4);
 		dContact.setNotes("senior java programmer");
-		contacts.add(dContact);
+		contactsY.add(dContact);
 		//------------------------
 
+		ContactList contactlist = new ContactList(contactsY);
+		//contactlist.setContactList(contactsY);
+		
 		checkFolderExistsOtherwiseCreate(aFolder);
-		saveFileToFolder(aContact, aFile);
+		//saveFileToFolder(contactsY, aFile);
+		saveFileToFolder(contactlist, aFile);
 
 	}
 
@@ -61,20 +70,22 @@ public class ObjectToXML
 		} 
 	}
 
-	public static void saveFileToFolder(ContactImpl contacts, File file)
+	public static void saveFileToFolder(ContactList contacts, File file)
 	{
 		System.out.println("saving file...");
 		try {
-
-			JAXBContext jaxbContext = JAXBContext.newInstance(ContactImpl.class);
+			
+			// create JAXB context and instantiate marshaller
+			JAXBContext jaxbContext = JAXBContext.newInstance(ContactList.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-			// output pretty printed
-			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-			jaxbMarshaller.marshal(contacts, file);
+			// Write to System.out
 			jaxbMarshaller.marshal(contacts, System.out);
 
+		    // Write to File
+			jaxbMarshaller.marshal(contacts, file);
+			
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
