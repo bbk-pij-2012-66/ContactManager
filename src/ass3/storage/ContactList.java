@@ -12,7 +12,7 @@ public class ContactList
 
 	private static ArrayList<ContactImpl> contactsX;
 
-	ContactList(){}
+	public ContactList(){}
 	
 	ContactList(ArrayList<ContactImpl> contacts) {
 		ContactList.contactsX = contacts;

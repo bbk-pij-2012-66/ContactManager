@@ -59,7 +59,7 @@ public class Tests {
 	}
 
 	@Test
-	public void add_New_Contact()
+	public void add_New_Contact_and_flush()
 	{
 		ContactManager sut = new ContactManagerImpl();
 
@@ -69,6 +69,8 @@ public class Tests {
 		{
 			System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
 		}
+		
+		sut.flush();
 	}
 
 

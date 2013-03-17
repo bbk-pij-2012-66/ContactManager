@@ -10,6 +10,7 @@ import ass3.interfaces.FutureMeeting;
 import ass3.interfaces.Meeting;
 import ass3.interfaces.PastMeeting;
 import ass3.storage.ContactList;
+import ass3.storage.ObjectToXML;
 
 
 public class ContactManagerImpl implements ContactManager
@@ -120,10 +121,11 @@ public class ContactManagerImpl implements ContactManager
 	@Override
 	public void flush()
 	{
-//		ObjectToXML flusher = new ObjectToXML();
-//		ContactList list = (ContactList) getContacts();
-//		
-//		flusher.pushToFile(list);
+		ObjectToXML flusher = new ObjectToXML();
+		ContactList listOfContacts = new ContactList();
+		listOfContacts.getContactList();
+		
+		flusher.pushToFile(listOfContacts);
 
 	}
 
