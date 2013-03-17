@@ -1,6 +1,8 @@
 package ass3.classes;
 
 
+import java.util.ArrayList;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,6 +25,7 @@ public class ContactImpl implements Contact
 	private int contactID;
 	private String name;
 	private String notes = "";
+	static private ArrayList<ContactImpl> list;
 
 	/**
 	 * Constructor for pre-populating objects on startup from txt file
@@ -47,7 +50,7 @@ public class ContactImpl implements Contact
 	 */
 	public ContactImpl(String name, String notes)
 	{
-		//this.contactID = setId();// need to check this id is unique
+		this.contactID = setId();// need to check this id is unique
 		this.name = name;
 		this.notes = notes;
 	}
@@ -69,18 +72,18 @@ public class ContactImpl implements Contact
 		return this.contactID;
 	}
 
-//	/**
-//	 * Create an ID for the contact.
-//	 *
-//	 * Must be unique!
-//	 * @return 
-//	 */	
-//	public int setId()
-//	{
-//		// use set type t
-//		contactID = IdGenerator.getID();
-//		return contactID;
-//	}
+	/**
+	 * Create an ID for the contact.
+	 *
+	 * Must be unique!
+	 * @return 
+	 */	
+	public int setId()
+	{
+		// use set type t
+		contactID = IdGenerator.getID(list);
+		return contactID;
+	}
 
 	/**
 	 * Setter for unit tests

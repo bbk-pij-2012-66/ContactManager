@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 import ass3.classes.ContactImpl;
-import ass3.storage.IdGenerator;
 import ass3.storage.XMLToObject;
 
 
@@ -31,7 +30,6 @@ public class launch {
 
 		}
 
-		System.out.println(IdGenerator.getID(list));
 
 	}
 

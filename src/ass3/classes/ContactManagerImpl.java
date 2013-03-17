@@ -9,6 +9,7 @@ import ass3.interfaces.ContactManager;
 import ass3.interfaces.FutureMeeting;
 import ass3.interfaces.Meeting;
 import ass3.interfaces.PastMeeting;
+import ass3.storage.ContactList;
 
 
 public class ContactManagerImpl implements ContactManager
@@ -32,7 +33,8 @@ public class ContactManagerImpl implements ContactManager
 	@Override
 	public void addNewContact(String name, String notes)
 	{
-
+		ContactImpl cContact = new ContactImpl(name, notes);
+		ContactList.addContact(cContact);
 	}	
 	
 	// returns a set of contacts based on some(?) ids

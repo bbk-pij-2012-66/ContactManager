@@ -10,20 +10,25 @@ import ass3.classes.ContactImpl;
 public class ContactList
 {
 
-	private ArrayList<ContactImpl> contactsX;
+	private static ArrayList<ContactImpl> contactsX;
 
 	ContactList(){}
 	
 	ContactList(ArrayList<ContactImpl> contacts) {
-		this.contactsX = contacts;
+		ContactList.contactsX = contacts;
 	}
 	
 	public void setContactList(ArrayList<ContactImpl> contacts) {
-		this.contactsX = contacts;
+		ContactList.contactsX = contacts;
 	}
 
 	public ArrayList<ContactImpl> getContactList() {
 		return contactsX;
+	}
+	
+	public static void addContact(ContactImpl contact)
+	{
+		contactsX.add(contact);
 	}
 
 }

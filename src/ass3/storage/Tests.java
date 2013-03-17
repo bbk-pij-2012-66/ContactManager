@@ -46,49 +46,49 @@ public class Tests {
 		bContact.setId(2);
 		bContact.addNotes("junior c++ programmer");
 		contacts.add(bContact);
-		ContactImpl cContact = new ContactImpl();
-		cContact.setName("Pete Axe");
-		cContact.setId(2);
-		cContact.addNotes("java programmer");
+		ContactImpl cContact = new ContactImpl("Pete Axe", "java programmer");
 		contacts.add(cContact);
 		ContactImpl dContact = new ContactImpl();
-		dContact.setName("Pat Mas");
+		dContact.setName("Pete Mas");
 		dContact.setId(4);
 		dContact.addNotes("senior java programmer");
 		contacts.add(dContact);
-		
+
 		listOfContacts.setContactList(contacts);
 
 	}
 
 	@Test
-	public void get_all_contacts()
+	public void add_New_Contact()
 	{
 		ContactManager sut = new ContactManagerImpl();
-		List<ContactImpl> listOfContacts = new ArrayList();
-		
-		// sut.getContacts(ids);
-		
+
+		sut.addNewContact("James Wingnut", "Special Ops");
+
+		for (ContactImpl contact : contacts) 
+		{
+			System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
+		}
 	}
-	
+
 
 	@Test
 	public void flush_command_saves_to_file()
 	{
 
 		//ContactManager testFlush = new ContactManagerImpl();
-		
+
 		//testFlush.flush();
 		ObjectToXML flusher = new ObjectToXML();
-		
+
 		flusher.pushToFile(listOfContacts);
-		
+
 		String home = System.getProperty("user.home"); 
 		File aFolder = new File(home + "/tmp");
 		File aFile = new File(aFolder + "/contacts.txt");
 
 		assertThat(aFile.exists(), is(true));
-		
+
 	}
 
 

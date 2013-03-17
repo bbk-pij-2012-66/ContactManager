@@ -12,33 +12,36 @@ public class IdGenerator
 	// get list of current IDs, stick into a set,
 	// iterate on set until you find one that doesn't exit
 	// send it back
-	
-	
+
+
 	public static int getID(ArrayList<ContactImpl> list) {
 
 		int randomInt;
-		
-		Set<Integer> setOfIds = new HashSet<Integer>();
-		Set<Integer> setOfNum = new HashSet<Integer>();
-		
-		for (ContactImpl contact : list) 
-		{
-			setOfIds.add(contact.getId());
-			setOfNum.add(contact.getId());	
-		}
-		
-		
-				
 		Random randomGenerator = new Random();
-		
-		do {
+
+		if (list == null) {
 			randomInt = randomGenerator.nextInt();
-			setOfNum.add(randomInt);
-		} while (setOfNum.size() == setOfIds.size());
-		
+		} 
+		else
+		{
+			Set<Integer> setOfIds = new HashSet<Integer>();
+			Set<Integer> setOfNum = new HashSet<Integer>();
+			
+			for (ContactImpl contact : list) 
+			{
+				setOfIds.add(contact.getId());
+				setOfNum.add(contact.getId());	
+			}
+			
+			do {
+				randomInt = randomGenerator.nextInt();
+				setOfNum.add(randomInt);
+			} while (setOfNum.size() == setOfIds.size());
+		}
+
 		return randomInt;
-		
+
 	}
-	
-	
+
+
 }
