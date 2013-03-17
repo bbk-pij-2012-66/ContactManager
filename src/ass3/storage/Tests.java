@@ -65,33 +65,41 @@ public class Tests {
 		ContactManager sut = new ContactManagerImpl();
 
 		contactReturned = sut.getContacts("Pete");
-		
+
+		Set<String> returnedNames = new HashSet<String>();
+		//returnedNames.add(contactReturned.);
+		for (Contact contact : contactReturned) 
+		{
+			//System.out.println(contact.getName());
+			returnedNames.add(contact.getName());
+		}
+
 		Set<String> testContacts = new HashSet<String>();
 		testContacts.add("Pete Mas");
 		testContacts.add("Pete Axe");
-		
-		assertThat(testContacts.equals(contactReturned), is(true));
+
+		assertThat(testContacts.equals(returnedNames), is(true));
 	}
-	
-	
-	
+
+
+
 	@Test
 	public void flush_command_saves_to_file()
 	{
-		
+
 		//ContactManager testFlush = new ContactManagerImpl();
-		
+
 		//testFlush.flush();
 		ObjectToXML flusher = new ObjectToXML();
-		
+
 		flusher.pushToFile(listOfContacts);
-		
+
 		String home = System.getProperty("user.home"); 
 		File aFolder = new File(home + "/tmp");
 		File aFile = new File(aFolder + "/contacts.txt");
-		
+
 		assertThat(aFile.exists(), is(true));
-		
+
 	}
 
 	@Test
@@ -101,11 +109,11 @@ public class Tests {
 
 		sut.addNewContact("James Wingnut", "Special Ops");
 
-//		for (ContactImpl contact : contacts) 
-//		{
-//			System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
-//		}
-		
+		//		for (ContactImpl contact : contacts) 
+		//		{
+		//			System.out.println("[id=" + contact.getId() + ", name=" + contact.getName() + ", notes=" + contact.getNotes() + "]");	
+		//		}
+
 		Set<Integer> setOfIds = new HashSet<Integer>();
 		List<Integer> listOfIds = new ArrayList<Integer>();
 
@@ -115,12 +123,12 @@ public class Tests {
 			listOfIds.add(contacts.get(i).getId());
 		}
 		assertThat(setOfIds.size(), is(listOfIds.size()));
-		
+
 		sut.flush();
 		String home = System.getProperty("user.home"); 
 		File aFolder = new File(home + "/tmp");
 		File aFile = new File(aFolder + "/contacts.txt");
-		
+
 		assertThat(aFile.exists(), is(true));
 	}
 

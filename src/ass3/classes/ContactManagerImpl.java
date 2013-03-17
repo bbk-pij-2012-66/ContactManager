@@ -50,11 +50,11 @@ public class ContactManagerImpl implements ContactManager
 		for (ContactImpl contact : listOfContacts.getContactList()) 
 		{
 			if (contact.getName().contains(name)) {
-				System.out.println(contact.getName());
+				//System.out.println(contact.getName());
+				contactNames.add(contact);
 			}
 				
 		}
-				
 		return contactNames;
 	}
 	
