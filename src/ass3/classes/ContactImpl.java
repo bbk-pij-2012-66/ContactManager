@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import ass3.interfaces.Contact;
+import ass3.storage.IdGenerator;
 
 
 
@@ -19,12 +20,10 @@ import ass3.interfaces.Contact;
 @XmlRootElement(name = "contact")
 public class ContactImpl implements Contact
 {
-
 	private int contactID;
 	private String name;
 	private String notes = "";
-	
-	
+
 	/**
 	 * Constructor for pre-populating objects on startup from txt file
 	 * 
@@ -38,7 +37,7 @@ public class ContactImpl implements Contact
 		this.name = name;
 		this.notes = notes;
 	}
-	
+
 	/**
 	 * Constructor for pre-populating objects on startup from txt file
 	 * 
@@ -48,7 +47,7 @@ public class ContactImpl implements Contact
 	 */
 	public ContactImpl(String name, String notes)
 	{
-		this.contactID = setId();// need to check this id is unique
+		//this.contactID = setId();// need to check this id is unique
 		this.name = name;
 		this.notes = notes;
 	}
@@ -70,20 +69,19 @@ public class ContactImpl implements Contact
 		return this.contactID;
 	}
 
-	/**
-	 * Create an ID for the contact.
-	 *
-	 * Must be unique!
-	 * @return 
-	 */	
-	public int setId()
-	{
-		// use set type t
-		contactID = contactID + 1;
-		return contactID;
-	
-	}
-	
+//	/**
+//	 * Create an ID for the contact.
+//	 *
+//	 * Must be unique!
+//	 * @return 
+//	 */	
+//	public int setId()
+//	{
+//		// use set type t
+//		contactID = IdGenerator.getID();
+//		return contactID;
+//	}
+
 	/**
 	 * Setter for unit tests
 	 * 
@@ -93,7 +91,7 @@ public class ContactImpl implements Contact
 	{
 		this.contactID = passedId;
 	}
-	
+
 	/**
 	 * Returns the name of the contact.
 	 *
@@ -105,7 +103,7 @@ public class ContactImpl implements Contact
 	{
 		return this.name;
 	}
-	
+
 	/**
 	 * Set the name of the contact.
 	 * 
@@ -122,7 +120,7 @@ public class ContactImpl implements Contact
 			this.name = name;
 		}
 	}
-	
+
 	/**
 	 * Returns our notes about the contact, if any.
 	 *
@@ -150,7 +148,7 @@ public class ContactImpl implements Contact
 		// currently set to append.
 		this.notes = this.notes + note;
 	}
-	
+
 	/**
 	 * Set notes about the contact.
 	 *
