@@ -1,5 +1,6 @@
 package ass3.classes;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
@@ -32,31 +33,7 @@ public class ContactManagerImpl implements ContactManager
 	}
 	
 	
-	// returns a set of contacts based on some(?) ids
-	@Override
-	public Set<Contact> getContacts(int... ids)
-	{	
-		return null;
-	}
 
-	// returns a set of contacts based on a Name
-	@Override
-	public Set<Contact> getContacts(String name)
-	{
-		ContactList listOfContacts = new ContactList();
-		Set<Contact> contactNames = new HashSet<Contact>();
-		
-		//grab all names
-		for (ContactImpl contact : listOfContacts.getContactList()) 
-		{
-			if (contact.getName().contains(name)) {
-				//System.out.println(contact.getName());
-				contactNames.add(contact);
-			}
-				
-		}
-		return contactNames;
-	}
 	
 ////////////////PAST MEETINGS
 	// returns PastMeeting object if id passed
@@ -145,4 +122,84 @@ public class ContactManagerImpl implements ContactManager
 		ContactList.addContact(cContact);
 	}	
 
+	// returns a set of contacts based on a Name
+	@Override
+	public Set<Contact> getContacts(String name)
+	{
+		ContactList listOfContacts = new ContactList();
+		Set<Contact> contactNames = new HashSet<Contact>();
+			
+		if (name == null || name.equals(""))
+		{
+			throw new IllegalArgumentException("This is not a valid name!");
+		}
+		else
+		{
+			//grab all names
+			for (ContactImpl contact : listOfContacts.getContactList()) 
+			{
+				if (contact.getName().contains(name)) {
+					//System.out.println(contact.getName());
+					contactNames.add(contact);
+				}
+				
+			}
+		}
+		
+		if (contactNames == null)
+		{
+			throw new IllegalArgumentException("This name does not exist!");
+		}
+		
+		return contactNames;
+	}
+
+	// returns a set of contacts based on some(?) ids
+	@Override
+	public Set<Contact> getContacts(int... ids)
+	{	
+		ContactList listOfContacts = new ContactList();
+		Set<Contact> contactNames = new HashSet<Contact>();
+//		List<Integer> li = new ArrayList<Integer>();
+//		int checkNum;
+		
+//		for (int i = 0 ; i < ids.length; i++)
+//		{
+//			li.add(Integer.valueOf(ids[i]));
+//		}
+		
+//		for (int i = 0; i < li.size(); i++)
+//		{
+//			System.out.println(li.get(i));
+//		}
+		
+		if (ids == null)
+		{
+			throw new IllegalArgumentException("This is not a valid name!");
+		}
+		else
+		{		
+			//grab all names
+			for (ContactImpl contact : listOfContacts.getContactList()) 
+			{
+				for (int i = 0; i < ids.length; i++)
+				{
+					
+					if (contact.getId() == ids[i])
+					{
+						//System.out.println(contact.getName());
+						contactNames.add(contact);
+					}
+				}
+				
+			}
+		}
+		
+		if (contactNames == null)
+		{
+			throw new IllegalArgumentException("This name does not exist!");
+		}
+		
+		return contactNames;
+	}
 }

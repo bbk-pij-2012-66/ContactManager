@@ -59,6 +59,30 @@ public class Tests {
 	}
 
 	@Test
+	public void return_contacts_based_on_id()
+	{
+		Set<Contact> contactReturned = new HashSet<Contact>();
+		ContactManager sut = new ContactManagerImpl();
+
+		contactReturned = sut.getContacts(1, 2, 4);
+
+		Set<String> returnedNames = new HashSet<String>();
+		//returnedNames.add(contactReturned.);
+		for (Contact contact : contactReturned) 
+		{
+			//System.out.println(contact.getName());
+			returnedNames.add(contact.getName());
+		}
+
+		Set<String> testContacts = new HashSet<String>();
+		testContacts.add("Pete Mas");
+		testContacts.add("Baz Maj");
+		testContacts.add("Matt Ross");
+
+		assertThat(testContacts.equals(returnedNames), is(true));
+	}
+	
+	@Test
 	public void return_contacts_based_on_name()
 	{
 		Set<Contact> contactReturned = new HashSet<Contact>();
