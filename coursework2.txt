@@ -46,16 +46,64 @@ C			2		2
 D			4		1
 E			8		4
 
+1	2	3	4	5	Elapsed time
+A	B	C	D	E	5
+A	B	C	D	E	10	
+A	B		D	E	14
+A	B		D	E	18
+A	B			E	21
+A	B			E	24
+A				E	26
+A				E	28
+A					29
+A					30
 
-
-
+The turnaround time for each process:
+A = 30min, B = 23min, C = 8min, D = 17min, E = 28min
+The average turnaround time is:
+(30+23+8+17+28) / 5 = 21.2min
 
 (b) Priority scheduling (5 being the highest priority).
 [4 marks]
+
+Assuming 5 is the highest priority
+Priority	Job	Turnaround time
+5			B	6min
+4			E	6+8 = 14min
+3			A	14+10 = 24min
+2			C	24+2 = 26min
+1			D	26+4 = 30min
+
+The average turnaround time is:
+(6+14+24+26+30) / 5 = 20min
+
 (c) First-come-first-served (in order A, . . . , E).
 [3 marks]
+
+Run in order 10, 6, 2, 4, 8
+Job	Turnaround time
+A	10min
+B	10+6 = 16min
+C	16+2 = 18min
+D	18+4 = 22min
+E	22+8 = 30min
+
+The average turnaround time is:
+(10+16+18+22+30) / 5 = 19.2min
+
 (d) Shortest process next.
 [3 marks]
+
+Running time	Job Turnaround time
+2				C	2min
+4				D	2+4 = 6min
+6				B	6+6 = 12min
+8				E	12+8 = 20min
+10				A	20+10 = 30min
+
+The average turnaround time is:
+(2+6+12+20+30) / 5 = 14min
+
 You can ignore process switching overhead and assume that all jobs are
 completely CPU-bound.
 Subtotal: [15 marks]
