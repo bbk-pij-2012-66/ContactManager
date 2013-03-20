@@ -37,7 +37,7 @@ response time for potential user requests).
 
 The performance of the RR algorithm depends heavily on the size of the time quantum. If the time quantum is extermely large, the RR policy is the same as the FCFS policy. If the time quantum is extremely small (say, 1 millisecond) , the RR approach is called processor sharing and (in theory) creates the appearance that each of the n processes has its own processor running at a 1/n the speed of the real processor.
 
-assuming a quantum of 1
+assuming a quantum of 1 second to allow for user input.
 
 JOB	Running time	Priority
 A			10		3
@@ -45,6 +45,21 @@ B			6		5
 C			2		2
 D			4		1
 E			8		4
+
+Thus while all 5 processes are in running, in 1 second they get 1 second of processing time a piece. In 10 seconds, each would have processed 2 seconds. In 1 minute, 12 seconds a piece. In 5 minutes they would have 1 minute a piece. Thus after 10 minutes they would have had 2 minutes of processing time a piece, at this rate Job C would have completed by the 10th minute.
+
+Job C elapsed time 9mins 58secs
+
+extrapolating this method we get the following elapsed times:
+
+Job D elapsed time 17mins 59secs
+Job B elapsed time 23mins 59secs
+Job E elapsed time 28mins
+Job A elapsed time 30mins
+
+
+
+We now have additional processing time available.
 
 1	2	3	4	5	Elapsed time
 A	B	C	D	E	5
