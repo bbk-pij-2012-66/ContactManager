@@ -57,9 +57,7 @@ Job B elapsed time 23mins 59secs
 Job E elapsed time 28mins
 Job A elapsed time 30mins
 
-
-
-We now have additional processing time available.
+which isn't far off using a 1 min quantum with the following calculations...
 
 1	2	3	4	5	Elapsed time
 A	B	C	D	E	5
