@@ -1,9 +1,5 @@
 Computer Systems Coursework, Part2
-1. A file server receives requests via a network. It takes 20 ms to dispatch the
-requested data and do the necessary processing, assuming that the data
-needed are in the cache. If a disk operation is needed, as is the case in
-one third of the time, an additional 90 ms is required, during which time
-the thread sleeps.
+1. A file server receives requests via a network. It takes 20 ms to dispatch the requested data and do the necessary processing, assuming that the data needed are in the cache. If a disk operation is needed, as is the case in one third of the time, an additional 90 ms is required, during which time the thread sleeps.
 (a) How many request/sec can the server handle if it is single threaded?
 [10 marks]
 
@@ -26,16 +22,12 @@ Subtotal: [15 marks]
 For a multithreaded server, all the waiting for the disk is overlapped, so every request takes 20ms, and the server can handle 50 requests per second.
 
 
-2. Five jobs A through E arrive at a multiprogrammed computer center at
-almost the same time. They have estimated running times of 10, 6, 2, 4
-and 8 minutes, respectively. Their fixed priorities are 3, 5, 2, 1, and 4,
-respectively. For each of the following scheduling algorithms, determine
-the average turnaround time.
+2. Five jobs A through E arrive at a multiprogrammed computer center at almost the same time. They have estimated running times of 10, 6, 2, 4 and 8 minutes, respectively. Their fixed priorities are 3, 5, 2, 1, and 4, respectively. For each of the following scheduling algorithms, determine the average turnaround time.
 (a) Round robin (choose a realistic quantum that would allow a short
 response time for potential user requests).
 [5 marks]
 
-The performance of the RR algorithm depends heavily on the size of the time quantum. If the time quantum is extermely large, the RR policy is the same as the FCFS policy. If the time quantum is extremely small (say, 1 millisecond) , the RR approach is called processor sharing and (in theory) creates the appearance that each of the n processes has its own processor running at a 1/n the speed of the real processor.
+The performance of the RR algorithm depends heavily on the size of the time quantum. If the time quantum is extremely large, the RR policy is the same as the FCFS policy. If the time quantum is extremely small (say, 1 millisecond) , the RR approach is called processor sharing and (in theory) creates the appearance that each of the n processes has its own processor running at a 1/n the speed of the real processor.
 
 assuming a quantum of 1 second to allow for user input.
 
@@ -117,13 +109,10 @@ Running time	Job Turnaround time
 The average turnaround time is:
 (2+6+12+20+30) / 5 = 14min
 
-You can ignore process switching overhead and assume that all jobs are
-completely CPU-bound.
+You can ignore process switching overhead and assume that all jobs are completely CPU-bound.
 Subtotal: [15 marks]
 
-3. Consider the following variant of the dining philosophers problem. Sup-
-pose that there are two types of philosophers. A \righty" always picks up
-his right fork first:
+3. Consider the following variant of the dining philosophers problem. Suppose that there are two types of philosophers. A "righty" always picks up his right fork first:
 
 begin
 	repeat
@@ -136,7 +125,7 @@ begin
 	forever
 end;
 
-while a \lefty" always picks up his left fork first:
+while a "lefty" always picks up his left fork first:
 
 begin
 	repeat
@@ -149,18 +138,20 @@ begin
 	forever
 end;
 
-Assume that there is at least one righty and one lefty at the round table
-and that the scheduling is fair. Determine whether
+Assume that there is at least one righty and one lefty at the round table and that the scheduling is fair. Determine whether
 (a) deadlock
 [12 marks]
+The definition of deadlock is a situation in which 2 or more competing actions are each waiting for the other to finish, and thus neither ever does. In this case the action is eating and the resources being competed for are the forks.
+
+For a deadlock the following conditions hold simultaneously in a system.
+	1. Mutual Exclusion: At least one resource must be non-shareable. In this case the resource is a fork and it is not shareable so this would be true.
+	2.Hold and Wait or Resource Holding: A process (philosopher) is holding at least one resource (a fork) and requesting additional resources(the other fork) which are being held by other processes (philosophers), so this would be true in this case.
+	3.No preemption: The resources (fork) must be given up by the processes (philosophers) voluntarily and not de-allocated
+
 (b) starvation
 [8 marks]
-are possible. [Hint: First find out whether a philosopher can pick up at
-least one fork.]
+are possible. [Hint: First find out whether a philosopher can pick up at least one fork.]
 Subtotal: [20 marks]
 
-4. A UNIX file system has 2-KB blocks and 4-byte disk addresses. What is
-the maximum file size if i-nodes contain 10 direct entries, and one single,
-double, and triple indirect entry each. (The blocksize of the data blocks
-referenced by the i-node is the same as the file system blocksize.)
+4. A UNIX file system has 2-KB blocks and 4-byte disk addresses. What is the maximum file size if i-nodes contain 10 direct entries, and one single, double, and triple indirect entry each. (The blocksize of the data blocks referenced by the i-node is the same as the file system blocksize.)
 [15 marks]
