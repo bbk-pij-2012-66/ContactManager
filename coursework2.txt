@@ -9,12 +9,12 @@ The weighted average is:
 
 	= (2/3)*20ms + (1/3)*110ms
 	= 50ms (per request)
-	
+
 Thus requests per second is:
 
 	= 1/0.05
 	= 20 requests per sec
-	
+
 (b) If it is multithreaded (one thread popping up at each request)?
 [5 marks]
 Subtotal: [15 marks]
@@ -32,11 +32,11 @@ The performance of the RR algorithm depends heavily on the size of the time quan
 assuming a quantum of 1 second to allow for user input.
 
 JOB	Running time	Priority
-A			10		3
-B			6		5
-C			2		2
-D			4		1
-E			8		4
+A	10		3
+B	6		5
+C	2		2
+D	4		1
+E	8		4
 
 Thus while all 5 processes are in running, in 1 second they get 1 second of processing time a piece. In 10 seconds, each would have processed 2 seconds. In 1 minute, 12 seconds a piece. In 5 minutes they would have 1 minute a piece. Thus after 10 minutes they would have had 2 minutes of processing time a piece, at this rate Job C would have completed by the 10th minute.
 
@@ -53,7 +53,7 @@ which isn't far off using a 1 min quantum with the following calculations...
 
 1	2	3	4	5	Elapsed time
 A	B	C	D	E	5
-A	B	C	D	E	10	
+A	B	C	D	E	10
 A	B		D	E	14
 A	B		D	E	18
 A	B			E	21
@@ -73,11 +73,11 @@ The average turnaround time is:
 
 Assuming 5 is the highest priority
 Priority	Job	Turnaround time
-5			B	6min
-4			E	6+8 = 14min
-3			A	14+10 = 24min
-2			C	24+2 = 26min
-1			D	26+4 = 30min
+5		B	6min
+4		E	6+8 = 14min
+3		A	14+10 = 24min
+2		C	24+2 = 26min
+1		D	26+4 = 30min
 
 The average turnaround time is:
 (6+14+24+26+30) / 5 = 20min
@@ -100,11 +100,11 @@ The average turnaround time is:
 [3 marks]
 
 Running time	Job Turnaround time
-2				C	2min
-4				D	2+4 = 6min
-6				B	6+6 = 12min
-8				E	12+8 = 20min
-10				A	20+10 = 30min
+2		C	2min
+4		D	2+4 = 6min
+6		B	6+6 = 12min
+8		E	12+8 = 20min
+10		A	20+10 = 30min
 
 The average turnaround time is:
 (2+6+12+20+30) / 5 = 14min
@@ -146,12 +146,13 @@ The definition of deadlock is a situation in which 2 or more competing actions a
 For a deadlock the following conditions hold simultaneously in a system.
 	1. Mutual Exclusion: At least one resource must be non-shareable. In this case the resource is a fork and it is not shareable so this would be true.
 	2.Hold and Wait or Resource Holding: A process (philosopher) is holding at least one resource (a fork) and requesting additional resources(the other fork) which are being held by other processes (philosophers), so this would be true in this case.
-	3.No preemption: The resources (fork) must be given up by the processes (philosophers) voluntarily and not de-allocated
+	3.No preemption: The resources (fork) must be given up by the processes (philosophers) voluntarily which is also true in this case.
+	4.Circular Wait: A process must be waiting for a resource which is being held by another process and this is possible in a round tabel situation where the if we were to number the philosphers from (say we have 5 philosphers) 1 to 5, such that philospher 1 is waiting on philosopher 2 who is waiting on philospher 3 and so until we get to philsopher 5 who is waiting on philospher 1.
 
 (b) starvation
 [8 marks]
 are possible. [Hint: First find out whether a philosopher can pick up at least one fork.]
 Subtotal: [20 marks]
 
-4. A UNIX file system has 2-KB blocks and 4-byte disk addresses. What is the maximum file size if i-nodes contain 10 direct entries, and one single, double, and triple indirect entry each. (The blocksize of the data blocks referenced by the i-node is the same as the file system blocksize.)
+4. A UNIX file system has 2-KB blocks and 4-byte disk addresses. What is the maximum file size if i-nodes contain 10 direct entries, and one single, double, and triple indirect entry each. (The block size of the data blocks referenced by the i-node is the same as the file system block size.)
 [15 marks]
