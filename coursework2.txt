@@ -156,3 +156,12 @@ Subtotal: [20 marks]
 
 4. A UNIX file system has 2-KB blocks and 4-byte disk addresses. What is the maximum file size if i-nodes contain 10 direct entries, and one single, double, and triple indirect entry each. (The block size of the data blocks referenced by the i-node is the same as the file system block size.)
 [15 marks]
+
+For a 4-byte address and a 2-KB block, we are looking at 2000/4 = 500 pointers.
+
+10 direct entries = 10*1 block = 10*2KB = 20KB
+1 single indirect = 1*(500 pointers)*1 block = 1*500*2KB = 1MB
+1 double indirect = 1*(500)*(500)*1 block = 1*500*500*2KB = 500MB
+1 triple indirect = 1*(500)*(500)*(500)*1 block = 1*500*500*500*2KB = 250GB
+
+Giving a total of 250,501,020,000 Bytes. It is actually greater than that since 1KB = 1024 Bytes, but I have written it like that to indicate the size of the file that each portion can handle.
