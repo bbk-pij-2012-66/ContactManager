@@ -147,7 +147,7 @@ For a deadlock the following conditions hold simultaneously in a system.
 	1. Mutual Exclusion: At least one resource must be non-shareable. In this case the resource is a fork and it is not shareable so this would be true.
 	2.Hold and Wait or Resource Holding: A process (philosopher) is holding at least one resource (a fork) and requesting additional resources(the other fork) which are being held by other processes (philosophers), so this would be true in this case.
 	3.No preemption: The resources (fork) must be given up by the processes (philosophers) voluntarily which is also true in this case.
-	4.Circular Wait: A process must be waiting for a resource which is being held by another process and this is possible in a round tabel situation where the if we were to number the philosphers from (say we have 5 philosphers) 1 to 5, such that philospher 1 is waiting on philosopher 2 who is waiting on philospher 3 and so until we get to philsopher 5 who is waiting on philospher 1.
+	4.Circular Wait: A process must be waiting for a resource which is being held by another process and this is possible in a round table situation where the if we were to number the philosophers from (say we have 5 philosophers) 1 to 5, such that philosopher 1 is waiting on philosopher 2 who is waiting on philosopher 3 and so until we get to philosopher 5 who is waiting on philosopher 1.
 
 (b) starvation
 [8 marks]
