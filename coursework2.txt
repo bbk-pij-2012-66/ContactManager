@@ -49,7 +49,10 @@ Job B elapsed time 23mins 59secs
 Job E elapsed time 28mins
 Job A elapsed time 30mins
 
-which isn't far off using a 1 min quantum with the following calculations...
+The average turnaround time is:
+(30+28+23Õ59+17Õ59+9Õ58) / 5 = 21.99mins
+
+As a comparison using a 1 min quantum with the following calculations...
 
 1	2	3	4	5	Elapsed time
 A	B	C	D	E	5
@@ -144,13 +147,29 @@ Assume that there is at least one righty and one lefty at the round table and th
 The definition of deadlock is a situation in which 2 or more competing actions are each waiting for the other to finish, and thus neither ever does. In this case the action is eating and the resources being competed for are the forks.
 
 For a deadlock the following conditions hold simultaneously in a system.
-	1. Mutual Exclusion: At least one resource must be non-shareable. In this case the resource is a fork and it is not shareable so this would be true.
+	1.Mutual Exclusion: At least one resource must be non-shareable. In this case the resource is a fork and it is not shareable so this would be true.
 	2.Hold and Wait or Resource Holding: A process (philosopher) is holding at least one resource (a fork) and requesting additional resources(the other fork) which are being held by other processes (philosophers), so this would be true in this case.
 	3.No preemption: The resources (fork) must be given up by the processes (philosophers) voluntarily which is also true in this case.
-	4.Circular Wait: A process must be waiting for a resource which is being held by another process and this is possible in a round table situation where the if we were to number the philosophers from (say we have 5 philosophers) 1 to 5, such that philosopher 1 is waiting on philosopher 2 who is waiting on philosopher 3 and so until we get to philosopher 5 who is waiting on philosopher 1.
+	4.Circular Wait: A process must be waiting for a resource which is being held by another process and this is possible in a round table situation where the if we were to number the philosophers from (say we have 5 philosophers) 1 to 5, such that philosopher 1 is waiting on philosopher 2 who is waiting on philosopher 3 and so until we get to philosopher 5 who is waiting on philosopher 1. However, as at least one philosopher picks up his forks in a different order than the others and such this would be false.
+
+To prove that circular wait is indeed broken we will take a table of 5 philosophers (A through E in a clockwise fashion) and analyse whether A has a chance to pick up both forks and eat.
+
+Philosopher A is a righty (rest of table leftys). If A is:
+- holding right fork:
+	A is waiting on the left fork to become available, this means that B is eating as we only have 1 righty at the table. Once B has finished eating and puts down the forks, A now has an opportunity to complete a set of forks and eat.
+- empty-handed:
+	A has no forks available, and the rest of the table is leftys. Thus B would be eating (as A's left fork missing means B has a complete set) and C, D, and E would be holding there left forks. Once B finishes, C completes a set of forks and eat, then D, then E, once E finishes eating an puts down forks A has an opportunity to pick up a left fork and wait at which point we are in the situation above and we see that A eventually eats.
+
+Philosopher A is a lefty (C is only righty). If A is:
+- holding left fork:
+	Going clockwise, B holds left fork, C is empty handed as B has picked up, D holds left fork and can pick up right as well. E holds left fork. Once D finishes, E completes set and eats. E finishes and A can complete and eat. Continuing... B would eat after A. After which C has an opportunity to pick up a fork.
+- empty-handed:
+	This means E is holding a left fork (maybe both), and B is definitely eating as A's left fork would complete B's set. Once B finishes eating A has an opportunity to pick up a left fork and hence, by the last case, A will have a chance to eat, and, no deadlock will occur.
 
 (b) starvation
 [8 marks]
+There is a possibility of starvation if there is a fast thinker and eater, philosopher A (from the first case in my example before) may not have an opportunity to pick up the final fork to complete a set as B always preempts them. This applies to the all cases from the example above.
+
 are possible. [Hint: First find out whether a philosopher can pick up at least one fork.]
 Subtotal: [20 marks]
 
@@ -165,3 +184,5 @@ For a 4-byte address and a 2-KB block, we are looking at 2000/4 = 500 pointers.
 1 triple indirect = 1*(500)*(500)*(500)*1 block = 1*500*500*500*2KB = 250GB
 
 Giving a total of 250,501,020,000 Bytes. It is actually greater than that since 1KB = 1024 Bytes, but I have written it like that to indicate the size of the file that each portion can handle.
+
+(exact number would be 20,480 + 1,048,576 + 536,870,912 + 274,877,906,944 = 275,415,846,912 bytes)
